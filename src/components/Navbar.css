@@ -1,0 +1,148 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 76px;
+  padding: 0 clamp(22px, 5.2vw, 92px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  background: #fffdfa;
+  color: #2e211a;
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+.nav-logo {
+  color: #3a2a23;
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 850;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 30px);
+}
+
+.nav-links a {
+  color: #080808;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.nav-links a:hover {
+  color: #5a3b2d;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+}
+
+.nav-contact-btn {
+  min-width: 118px;
+  min-height: 44px;
+  padding: 0 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #56382a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(86, 56, 42, 0.13);
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.nav-contact-btn:hover {
+  background: #3f261b;
+  transform: translateY(-1px);
+}
+
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-socials a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ece7df;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fffefa;
+  color: #111;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.nav-socials a:hover {
+  border-color: #d8c9bb;
+  background: #f8efe6;
+  transform: translateY(-1px);
+}
+
+.nav-socials svg {
+  display: block;
+}
+
+.nav-socials .brand-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+@media (max-width: 980px) {
+  .navbar {
+    grid-template-columns: 1fr auto;
+    padding-inline: 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    height: 68px;
+    gap: 16px;
+  }
+
+  .nav-logo {
+    font-size: 21px;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .nav-socials {
+    display: none;
+  }
+
+  .nav-contact-btn {
+    min-width: 96px;
+    min-height: 40px;
+    padding-inline: 20px;
+    font-size: 15px;
+  }
+}

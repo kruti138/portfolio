@@ -1,0 +1,39 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fdf8f2;
+  color: #3e2617;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+.portfolio-app {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background: #fdf8f2;
+}
