@@ -1,18 +1,30 @@
 import { ExternalLink } from 'lucide-react';
 import './Projects.css';
 
-const projects = [
+type Project = {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+};
+
+const projects: Project[] = [
   {
     title: 'Cravinoz',
     subtitle: 'Full-Stack Food Ordering Application',
     description: 'Production-ready food ordering platform built with Next.js, TypeScript, Node.js, Express, and MongoDB, with real-time order tracking, JWT roles, SMTP verification, and a live admin dashboard.',
     tags: ['Next.js', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    githubUrl: 'https://github.com/kruti138/cravinoz',
+    liveUrl: 'https://cravinoz.vercel.app/',
   },
   {
     title: 'MockMate',
     subtitle: 'AI-Powered Interview Platform',
     description: 'AI-powered full-stack interview platform with dynamic question generation, automated response evaluation, real-time WebSockets, role-based access control, and proctoring features.',
     tags: ['AI APIs', 'REST APIs', 'MongoDB', 'WebSockets', 'RBAC', 'Computer Vision'],
+    githubUrl: 'https://github.com/kruti138/MockMate',
   },
   {
     title: 'NearNow',
@@ -40,28 +52,38 @@ export default function Projects() {
         <h2 className="projects-title">Things I've Built</h2>
 
         <div className="projects-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <h3>{project.title}</h3>
-              <p className="project-subtitle">{project.subtitle}</p>
-              <p className="project-description">{project.description}</p>
-              <div className="project-tags">
-                {project.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-              <div className="project-actions">
-                <a href="#" className="project-link project-link-dark">
-                  <GitHubMark />
-                  GitHub
-                </a>
-                <a href="#" className="project-link project-link-live">
-                  <ExternalLink size={21} strokeWidth={2.2} />
-                  Live
-                </a>
-              </div>
-            </article>
-          ))}
+          {projects.map((project) => {
+            const actionCount = Number(Boolean(project.githubUrl)) + Number(Boolean(project.liveUrl));
+
+            return (
+              <article className="project-card" key={project.title}>
+                <h3>{project.title}</h3>
+                <p className="project-subtitle">{project.subtitle}</p>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                {actionCount > 0 ? (
+                  <div className={`project-actions${actionCount === 1 ? ' project-actions-single' : ''}`}>
+                    {project.githubUrl ? (
+                      <a href={project.githubUrl} className="project-link project-link-dark" target="_blank" rel="noreferrer">
+                        <GitHubMark />
+                        GitHub
+                      </a>
+                    ) : null}
+                    {project.liveUrl ? (
+                      <a href={project.liveUrl} className="project-link project-link-live" target="_blank" rel="noreferrer">
+                        <ExternalLink size={21} strokeWidth={2.2} />
+                        Live
+                      </a>
+                    ) : null}
+                  </div>
+                ) : null}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

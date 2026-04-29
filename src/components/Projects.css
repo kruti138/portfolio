@@ -118,6 +118,10 @@
   gap: 12px;
 }
 
+.project-actions-single {
+  grid-template-columns: 1fr;
+}
+
 .project-link {
   min-height: 48px;
   border-radius: 6px;
