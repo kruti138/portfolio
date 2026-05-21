@@ -83,8 +83,20 @@ export default async function handler(request, response) {
       return response.status(400).json({ message: result.error });
     }
 
-    const collection = await getCollection();
-    const insertResult = await collection.insertOne(result.value);
+    let insertResult;
+    const isMockMode = !process.env.MONGODB_URI || process.env.MONGODB_URI === 'your_mongodb_atlas_connection_string';
+
+    if (isMockMode) {
+      console.log('\n==================================================');
+      console.log('API: Local Development Mode (MongoDB URI is not set)');
+      console.log('Received contact form submission:');
+      console.log(JSON.stringify(result.value, null, 2));
+      console.log('==================================================\n');
+      insertResult = { insertedId: 'mock_local_id_' + Date.now() };
+    } else {
+      const collection = await getCollection();
+      insertResult = await collection.insertOne(result.value);
+    }
 
     return response.status(201).json({
       message: 'Message saved successfully.',

@@ -49,24 +49,29 @@ export default function Contact() {
     setSubmitMessage(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formsubmit.co/ajax/krutijasani5325@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `New Portfolio Message: ${formData.subject}`,
+          _replyto: formData.email,
+          message: formData.message,
+        }),
       });
 
-      const result = (await response.json().catch(() => null)) as { message?: string } | null;
-
       if (!response.ok) {
-        throw new Error(result?.message || 'Unable to send your message right now.');
+        throw new Error('Unable to send your message right now.');
       }
 
       setFormData(initialFormData);
       setSubmitMessage({
         tone: 'success',
-        text: result?.message || 'Message saved successfully.',
+        text: 'Your message has been sent successfully to Kruti Jasani!',
       });
     } catch (error) {
       setSubmitMessage({
