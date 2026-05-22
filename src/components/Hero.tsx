@@ -28,7 +28,7 @@ export default function Hero() {
             end-to-end ownership across the MERN stack and Next.js.
           </p>
           <div className="hero-buttons">
-            <a href="/Kruti_Jasani_FullStack_resume.pdf" className="btn-primary" download>Download Resume</a>
+            <a href={`${import.meta.env.BASE_URL}Kruti_Jasani_FullStack_resume.pdf`} className="btn-primary" download>Download Resume</a>
             <a href="#projects" className="btn-secondary">View Project</a>
           </div>
         </div>
